@@ -2,9 +2,9 @@
 
 namespace WorkoutTrackerBusinessLogic.Utils;
 
-public class TrackWorkoutUtil
+public static class TrackWorkoutUtil
 {
-    static private readonly string MENU =
+    private static readonly string MENU =
         """
         1.Start workout.
         2.Back to main menu.
@@ -12,8 +12,6 @@ public class TrackWorkoutUtil
     
     public static void Menu()
     {
-
-        
         char input;
         do
         {
