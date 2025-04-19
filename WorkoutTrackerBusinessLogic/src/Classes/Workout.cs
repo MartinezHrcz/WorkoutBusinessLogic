@@ -2,6 +2,9 @@
 
 public class Workout
 {
+    private string name;
+    public string Name { get => name; set => name = value; }
+    
     private List<Set> sets;
     public List<Set> Sets
     { get => sets; set => sets = value; }
@@ -12,8 +15,9 @@ public class Workout
     private DateOnly dateOfWorkout;
     public DateOnly DateOfWorkout { get => dateOfWorkout;}
 
-    public Workout(List<Set> sets, int duration, DateOnly dateOfWorkout)
+    public Workout(string name,List<Set> sets, int duration, DateOnly dateOfWorkout)
     {
+        this.name = name;
         this.sets = sets;
         this.duration = duration;
         this.dateOfWorkout = dateOfWorkout;
