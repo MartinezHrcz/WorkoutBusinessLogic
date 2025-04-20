@@ -11,6 +11,14 @@ public class Excercise
     private string desc;
     public string Description { get => desc; set => desc = value; }
 
+    //Constructor for initalization from txt file
+    public Excercise(string type, string name, string desc)
+    {
+        this.type = Enum.Parse<ExcersizeType>(type, true);
+        this.name = name;
+        this.desc = desc;
+    }
+
     public Excercise(ExcersizeType excersizeType, string name, string description)
     {
         type = excersizeType;

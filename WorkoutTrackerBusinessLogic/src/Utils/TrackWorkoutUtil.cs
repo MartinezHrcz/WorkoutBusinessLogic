@@ -30,9 +30,35 @@ public static class TrackWorkoutUtil
 
     private static void Start()
     {
-        Console.Clear();
-        Console.WriteLine("START METHOD");
-        Console.WriteLine("Press any key to continue...");
+        DateTime startTime = DateTime.Now;
+        List<Set> sets = new List<Set>();
+        char menuInput = ' ' ;
+        do
+        {
+            Console.Clear();
+            Console.WriteLine("Welcome to the Workout Tracking System!");
+            Console.WriteLine($"Start of the workout: {startTime.TimeOfDay.Hours}:{startTime.TimeOfDay.Minutes}");
+            Console.WriteLine("-----------------------------------");
+            Console.WriteLine("1.Add set \n 2. Stop Workout");
+            switch (menuInput)
+            {
+                case '1':
+                    Excercise setExcercise = ExcerciseUtils.SelectExcersice();
+                    if (setExcercise != null)
+                    {
+                        Console.WriteLine("Can't add excercise!");
+                        break;
+                    }
+                    Set tempSet = new Set()
+                    break;
+                case '2':
+                    Console.WriteLine("Going to menu!");
+                    Console.WriteLine("Press any key to continue...");
+                    Console.ReadKey();
+                    break;
+            }
+        } while (menuInput != '2');
+        
         Console.ReadKey();
     }
 

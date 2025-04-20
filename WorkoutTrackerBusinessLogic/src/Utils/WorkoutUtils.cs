@@ -42,7 +42,13 @@ public class WorkoutUtils
         }
         return true;
     }
-    
+
+    public static void AddWorkout(string workoutName, List<Set> sets ,DateOnly dateOfWorkout, int duration)
+    {
+        Workout toBeAdded = new Workout(workoutName, sets, duration ,dateOfWorkout);
+        workoutsList.Add(toBeAdded);
+    }
+
     public static void ShowAll()
     {
         Console.Clear();
