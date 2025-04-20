@@ -49,7 +49,10 @@ public static class TrackWorkoutUtil
                         Console.WriteLine("Can't add excercise!");
                         break;
                     }
-                    Set tempSet = new Set()
+
+                    int[] WeightAndReps = ExcerciseUtils.WeightAndReps(setExcercise);
+                    Set tempSet = new Set(setExcercise, WeightAndReps[1], WeightAndReps[0]);
+                    sets.Add(tempSet);
                     break;
                 case '2':
                     Console.WriteLine("Going to menu!");
@@ -58,11 +61,6 @@ public static class TrackWorkoutUtil
                     break;
             }
         } while (menuInput != '2');
-        
         Console.ReadKey();
     }
-
-
-
-   
 }

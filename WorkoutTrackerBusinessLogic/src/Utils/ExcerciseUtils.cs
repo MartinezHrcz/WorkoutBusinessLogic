@@ -37,4 +37,22 @@ public class ExcerciseUtils
         return excercises.Find(x => x.Name == input);
     }
 
+    public static int[] WeightAndReps(Excercise excercise)
+    {
+        int inputWeight =0;
+        do
+        {
+            Console.Clear();
+            Console.WriteLine($"{excercise.Name} Weight:");
+            inputWeight = Int32.TryParse(Console.ReadLine().Trim(), out inputWeight) ? inputWeight : 0;
+        } while (inputWeight <= 0);
+        int inputReps = 0;
+        do
+        {
+            Console.Clear();
+            Console.WriteLine($"{excercise.Name} Reps:");
+            inputWeight = Int32.TryParse(Console.ReadLine().Trim(), out inputWeight) ? inputWeight : 0;
+        } while (inputReps <= 0);
+        return new int[] { inputWeight, inputReps };
+    }
 }
