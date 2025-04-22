@@ -56,4 +56,9 @@ public class WorkoutUtils
         Console.WriteLine("Press any key to continue...");
         Console.ReadKey();
     }
+
+    public static void AddWorkout(Workout tempWorkout)
+    {
+        
+    }
 }

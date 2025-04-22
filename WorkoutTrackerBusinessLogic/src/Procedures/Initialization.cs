@@ -7,7 +7,11 @@ public class Initialization
 {
     public static void Initialize()
     {
-        if (!LoadInDefaultExc())
+        try
+        {
+            LoadInDefaultExc();
+        }
+        catch (Exception e)
         {
             Console.WriteLine("Default excercises could not be loaded. \n Continue anyway? (Y/N):");
             char input;
@@ -20,11 +24,14 @@ public class Initialization
             {
                 Environment.Exit(0);
             }
+            throw;
         }
         
+
+
     }
 
-    private static bool LoadInDefaultExc()
+    private static void LoadInDefaultExc()
     {
         Console.WriteLine("Loading default exc");
         StreamReader sr;
@@ -32,10 +39,10 @@ public class Initialization
         {
             sr = File.OpenText("../../../src/Files/DefaultExcercises");
         }
-        catch (Exception e)
+        catch (NullReferenceException e)
         {
             Console.WriteLine(e);
-            return false;
+            return;
         }
         
         Excercise loadedExc;
@@ -46,12 +53,16 @@ public class Initialization
             lineNumber++;
             string[] line = sr.ReadLine().Split(';');
             loadedExc = new Excercise(line[0], line[1], line[2]);
-            ExcerciseUtils.excercises.Add(loadedExc);
+            if (loadedExc != null)
+            {
+                ExcerciseUtils.excercises.Add(loadedExc);
+                Console.WriteLine("Loaded excercise: " + loadedExc.Name);
+            }
+
+            
         }
 
         if (lineNumber != ExcerciseUtils.excercises.Count)
-        { return false; }
-        
-        return true;
+        { return; }
     }
 }

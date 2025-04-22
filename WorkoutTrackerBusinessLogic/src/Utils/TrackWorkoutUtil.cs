@@ -30,6 +30,8 @@ public static class TrackWorkoutUtil
 
     private static void Start()
     {
+        Console.WriteLine("Give a name of the workout:");
+        string workoutName = Console.ReadLine();
         DateTime startTime = DateTime.Now;
         List<Set> sets = new List<Set>();
         char menuInput = ' ' ;
@@ -40,21 +42,30 @@ public static class TrackWorkoutUtil
             Console.WriteLine($"Start of the workout: {startTime.TimeOfDay.Hours}:{startTime.TimeOfDay.Minutes}");
             Console.WriteLine("-----------------------------------");
             Console.WriteLine("1.Add set \n 2. Stop Workout");
+            menuInput = Console.ReadKey().KeyChar;
             switch (menuInput)
             {
                 case '1':
-                    Excercise setExcercise = ExcerciseUtils.SelectExcersice();
-                    if (setExcercise != null)
+                    Excercise setExcercise;
+                    try
                     {
-                        Console.WriteLine("Can't add excercise!");
+                        setExcercise = ExcerciseUtils.SelectExcersice();
+                    }
+                    catch (NullReferenceException e)
+                    {
+                        Console.WriteLine("Can't select excercise!");
                         break;
                     }
 
-                    int[] WeightAndReps = ExcerciseUtils.WeightAndReps(setExcercise);
-                    Set tempSet = new Set(setExcercise, WeightAndReps[1], WeightAndReps[0]);
+                    int[] weightAndReps = ExcerciseUtils.WeightAndReps(setExcercise);
+                    Set tempSet = new Set(setExcercise, weightAndReps[1], weightAndReps[0]);
                     sets.Add(tempSet);
+                    
                     break;
                 case '2':
+                    Console.Clear();
+                    Workout tempWorkout = new Workout(workoutName, sets, DateTime.Now.Subtract(startTime).Seconds ,DateOnly.Parse(DateTime.Now.ToString("MM/dd/yyyy")));
+                    WorkoutUtils.AddWorkout(tempWorkout);
                     Console.WriteLine("Going to menu!");
                     Console.WriteLine("Press any key to continue...");
                     Console.ReadKey();

@@ -5,7 +5,7 @@ public enum ExcersizeType
     NOTSET,
     CHEST,
     ARM,
-    LEG,
+    LEGS,
     BACK,
     CARDIO
 }

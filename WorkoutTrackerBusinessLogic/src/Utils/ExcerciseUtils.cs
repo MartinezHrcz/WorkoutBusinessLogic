@@ -4,7 +4,7 @@ namespace WorkoutTrackerBusinessLogic.Utils;
 
 public class ExcerciseUtils
 {
-    public static List<Excercise> excercises;
+    public static List<Excercise> excercises = new List<Excercise>();
     
     public static Excercise MakeNewExcercise()
     {
@@ -16,13 +16,13 @@ public class ExcerciseUtils
     {
         if (excercises.Count == 0)
         {
-            Console.WriteLine("No excercises!");
+            Console.WriteLine("No available excercises!");
             return null;
         }
 
         int i = 0;
         string excerciseList = "";
-        excercises.ForEach(exc => excerciseList += $" {exc.Name}, {exc.Type}");
+        excercises.ForEach(exc => excerciseList += $" {exc.Name}, {exc.Type} \n");
         string input;
         do
         {
@@ -31,14 +31,22 @@ public class ExcerciseUtils
             Console.WriteLine("------To go back type: QUIT---------");
             Console.Write("Enter excercise name: ");
             input = Console.ReadLine().ToLower().Trim();
-        } while (!excercises.Select(x => x.Name.ToLower()).Contains(input) || input.Equals("quit"));
+            Console.WriteLine(input);
+            //Console.WriteLine(excercises.Find(x => x.Name.ToLower().Trim() == input));
+        } while (!excercises.Select(x => x.Name.Trim().ToLower()).ToList().Contains(input) && !input.Equals("quit"));
 
         if (input.Equals("quit")) return null;
-        return excercises.Find(x => x.Name == input);
+        return excercises.Find(x => x.Name.Trim().ToLower().Equals(input));
     }
 
     public static int[] WeightAndReps(Excercise excercise)
     {
+        if (excercise == null)
+        {
+            Console.WriteLine("Null");
+            return null;
+        }
+
         int inputWeight =0;
         do
         {
@@ -51,7 +59,7 @@ public class ExcerciseUtils
         {
             Console.Clear();
             Console.WriteLine($"{excercise.Name} Reps:");
-            inputWeight = Int32.TryParse(Console.ReadLine().Trim(), out inputWeight) ? inputWeight : 0;
+            inputReps = Int32.TryParse(Console.ReadLine().Trim(), out inputWeight) ? inputWeight : 0;
         } while (inputReps <= 0);
         return new int[] { inputWeight, inputReps };
     }
