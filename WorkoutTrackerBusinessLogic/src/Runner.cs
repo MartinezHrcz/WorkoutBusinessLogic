@@ -19,9 +19,6 @@ public class Runner
     public static void Main(string[] args)
     {
         Initialization.Initialize();
-        //Testing:
-        Workout w1 = new Workout("New Workout", new List<Set>(),1000 ,  DateOnly.FromDateTime(DateTime.Now));
-        WorkoutUtils.WorkoutsList.Add(w1);
         char input;
         do
         {

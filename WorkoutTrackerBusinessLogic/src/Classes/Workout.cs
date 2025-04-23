@@ -25,9 +25,11 @@ public class Workout
 
     public override string ToString()
     {
+        int hours = duration / 3600;
+        int minutes = duration % 3600 / 60;
         string output = "";
-        output += this.DateOfWorkout.ToString() + "\n";
-        output += $"Workout ({this.duration}): \n";
+        output += DateOfWorkout.ToString() + "\n";
+        output += $"{name} ({hours}: {minutes}): \n";
         sets.ForEach(set => output += set.ToString() + "\n");
         
         return output;

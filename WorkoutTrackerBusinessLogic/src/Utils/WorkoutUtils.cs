@@ -5,7 +5,6 @@ namespace WorkoutTrackerBusinessLogic.Utils;
 public class WorkoutUtils
 {
     
-    
     private static List<Workout> workoutsList = new List<Workout>();
     public static List<Workout> WorkoutsList
     {
@@ -48,17 +47,19 @@ public class WorkoutUtils
         Workout toBeAdded = new Workout(workoutName, sets, duration ,dateOfWorkout);
         workoutsList.Add(toBeAdded);
     }
+    
+    public static void AddWorkout(Workout tempWorkout)
+    {
+        workoutsList.Add(tempWorkout);
+    }
 
     public static void ShowAll()
     {
         Console.Clear();
-        Console.WriteLine("SHOW ALL");
+        workoutsList.ForEach(Console.WriteLine);
         Console.WriteLine("Press any key to continue...");
         Console.ReadKey();
     }
 
-    public static void AddWorkout(Workout tempWorkout)
-    {
-        
-    }
+
 }

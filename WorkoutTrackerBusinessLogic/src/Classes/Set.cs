@@ -11,9 +11,9 @@ public class Set
 
     public Set(Excercise excercise, int reps, double weight)
     {
-        excercise = excercise;
-        reps = reps;
-        weight = weight;
+        this.excercise = excercise;
+        this.reps = reps;
+        this.weight = weight;
     }
 
     public override string ToString()

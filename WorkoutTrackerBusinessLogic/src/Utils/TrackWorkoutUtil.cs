@@ -60,7 +60,6 @@ public static class TrackWorkoutUtil
                     int[] weightAndReps = ExcerciseUtils.WeightAndReps(setExcercise);
                     Set tempSet = new Set(setExcercise, weightAndReps[1], weightAndReps[0]);
                     sets.Add(tempSet);
-                    
                     break;
                 case '2':
                     Console.Clear();
