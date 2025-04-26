@@ -39,7 +39,7 @@ public class WorkoutUtils
     //Needs to be fixed!!!
     public static void DeleteWorkout()
     {
-        Workout workout = SelectWorkout() ;
+        var workout = SelectWorkout() ;
         if (workout.Equals(null))
         {
             Console.WriteLine("Unable to delete workout! \n Press any key to continue...");
